@@ -15,7 +15,7 @@ defmodule Csv.Records.Record do
   def changeset(record, attrs) do
     record
     |> cast(attrs, [:uid, :description, :date_created, :link])
-    |> validate_required([:uid, :description, :date_created, :link])
+    |> validate_required([:uid, :date_created])
     |> unique_constraint(:uid)
   end
 end

@@ -67,11 +67,12 @@ defmodule Csv.Records do
       {:error, %Ecto.Changeset{}}
 
   """
-  def update_record(%Record{} = record, attrs) do
-    record
-    |> Record.changeset(attrs)
-    |> Repo.update()
-  end
+
+  # def update_record(%Record{} = record, attrs) do
+  #   record
+  #   |> Record.changeset(attrs)
+  #   |> Repo.update()
+  # end
 
   @doc """
   Deletes a record.
@@ -98,7 +99,7 @@ defmodule Csv.Records do
       %Ecto.Changeset{data: %Record{}}
 
   """
-  def change_record(%Record{} = record, attrs \\ %{}) do
-    Record.changeset(record, attrs)
-  end
+  # def change_record(%Record{} = record, attrs \\ %{}) do
+  #   Record.changeset(record, attrs)
+  # end
 end

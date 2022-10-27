@@ -20,13 +20,12 @@
       <td><%= bad_record.link %></td>
 
       <td>
-        <span><%= link "Show", to: Routes.bad_record_path(@conn, :show, bad_record) %></span>
-        <span><%= link "Edit", to: Routes.bad_record_path(@conn, :edit, bad_record) %></span>
-        <span><%= link "Delete", to: Routes.bad_record_path(@conn, :delete, bad_record), method: :delete, data: [confirm: "Are you sure?"] %></span>
+            <span><%= link "Show", to: Routes.bad_record_path(@conn, :show, bad_record) %></span>
+
       </td>
     </tr>
 <% end %>
   </tbody>
 </table>
 
-<span><%= link "New Bad record", to: Routes.bad_record_path(@conn, :new) %></span>
+

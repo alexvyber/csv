@@ -15,6 +15,6 @@ defmodule Csv.BadRecords.BadRecord do
   def changeset(bad_record, attrs) do
     bad_record
     |> cast(attrs, [:uid, :description, :date_created, :link])
-    |> validate_required([:uid, :description, :date_created, :link])
+    |> validate_required([:uid, :date_created])
   end
 end

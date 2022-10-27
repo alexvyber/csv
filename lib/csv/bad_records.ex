@@ -67,11 +67,12 @@ defmodule Csv.BadRecords do
       {:error, %Ecto.Changeset{}}
 
   """
-  def update_bad_record(%BadRecord{} = bad_record, attrs) do
-    bad_record
-    |> BadRecord.changeset(attrs)
-    |> Repo.update()
-  end
+
+  # def update_bad_record(%BadRecord{} = bad_record, attrs) do
+  #   bad_record
+  #   |> BadRecord.changeset(attrs)
+  #   |> Repo.update()
+  # end
 
   @doc """
   Deletes a bad_record.
@@ -98,7 +99,7 @@ defmodule Csv.BadRecords do
       %Ecto.Changeset{data: %BadRecord{}}
 
   """
-  def change_bad_record(%BadRecord{} = bad_record, attrs \\ %{}) do
-    BadRecord.changeset(bad_record, attrs)
-  end
+  # def change_bad_record(%BadRecord{} = bad_record, attrs \\ %{}) do
+  #   BadRecord.changeset(bad_record, attrs)
+  # end
 end

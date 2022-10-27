@@ -21,12 +21,11 @@
 
       <td>
         <span><%= link "Show", to: Routes.record_path(@conn, :show, record) %></span>
-        <span><%= link "Edit", to: Routes.record_path(@conn, :edit, record) %></span>
-        <span><%= link "Delete", to: Routes.record_path(@conn, :delete, record), method: :delete, data: [confirm: "Are you sure?"] %></span>
+        
+        
       </td>
     </tr>
 <% end %>
   </tbody>
 </table>
 
-<span><%= link "New Record", to: Routes.record_path(@conn, :new) %></span>
