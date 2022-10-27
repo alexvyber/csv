@@ -3,8 +3,18 @@ defmodule CsvWeb.RecordControllerTest do
 
   import Csv.RecordsFixtures
 
-  @create_attrs %{date_created: ~N[2022-10-26 16:52:00], description: "some description", link: "some link", uid: "some uid"}
-  @update_attrs %{date_created: ~N[2022-10-27 16:52:00], description: "some updated description", link: "some updated link", uid: "some updated uid"}
+  @create_attrs %{
+    date_created: ~N[2022-10-26 16:52:00],
+    description: "some description",
+    link: "some link",
+    uid: "some uid"
+  }
+  @update_attrs %{
+    date_created: ~N[2022-10-27 16:52:00],
+    description: "some updated description",
+    link: "some updated link",
+    uid: "some updated uid"
+  }
   @invalid_attrs %{date_created: nil, description: nil, link: nil, uid: nil}
 
   describe "index" do

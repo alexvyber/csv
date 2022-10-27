@@ -3,8 +3,18 @@ defmodule CsvWeb.BadRecordControllerTest do
 
   import Csv.BadRecordsFixtures
 
-  @create_attrs %{date_created: ~N[2022-10-26 16:57:00], description: "some description", link: "some link", uid: "some uid"}
-  @update_attrs %{date_created: ~N[2022-10-27 16:57:00], description: "some updated description", link: "some updated link", uid: "some updated uid"}
+  @create_attrs %{
+    date_created: ~N[2022-10-26 16:57:00],
+    description: "some description",
+    link: "some link",
+    uid: "some uid"
+  }
+  @update_attrs %{
+    date_created: ~N[2022-10-27 16:57:00],
+    description: "some updated description",
+    link: "some updated link",
+    uid: "some updated uid"
+  }
   @invalid_attrs %{date_created: nil, description: nil, link: nil, uid: nil}
 
   describe "index" do
@@ -51,7 +61,9 @@ defmodule CsvWeb.BadRecordControllerTest do
     setup [:create_bad_record]
 
     test "redirects when data is valid", %{conn: conn, bad_record: bad_record} do
-      conn = put(conn, Routes.bad_record_path(conn, :update, bad_record), bad_record: @update_attrs)
+      conn =
+        put(conn, Routes.bad_record_path(conn, :update, bad_record), bad_record: @update_attrs)
+
       assert redirected_to(conn) == Routes.bad_record_path(conn, :show, bad_record)
 
       conn = get(conn, Routes.bad_record_path(conn, :show, bad_record))
@@ -59,7 +71,9 @@ defmodule CsvWeb.BadRecordControllerTest do
     end
 
     test "renders errors when data is invalid", %{conn: conn, bad_record: bad_record} do
-      conn = put(conn, Routes.bad_record_path(conn, :update, bad_record), bad_record: @invalid_attrs)
+      conn =
+        put(conn, Routes.bad_record_path(conn, :update, bad_record), bad_record: @invalid_attrs)
+
       assert html_response(conn, 200) =~ "Edit Bad record"
     end
   end

@@ -21,7 +21,12 @@ defmodule Csv.RecordsTest do
     end
 
     test "create_record/1 with valid data creates a record" do
-      valid_attrs = %{date_created: ~N[2022-10-26 16:52:00], description: "some description", link: "some link", uid: "some uid"}
+      valid_attrs = %{
+        date_created: ~N[2022-10-26 16:52:00],
+        description: "some description",
+        link: "some link",
+        uid: "some uid"
+      }
 
       assert {:ok, %Record{} = record} = Records.create_record(valid_attrs)
       assert record.date_created == ~N[2022-10-26 16:52:00]
@@ -36,7 +41,13 @@ defmodule Csv.RecordsTest do
 
     test "update_record/2 with valid data updates the record" do
       record = record_fixture()
-      update_attrs = %{date_created: ~N[2022-10-27 16:52:00], description: "some updated description", link: "some updated link", uid: "some updated uid"}
+
+      update_attrs = %{
+        date_created: ~N[2022-10-27 16:52:00],
+        description: "some updated description",
+        link: "some updated link",
+        uid: "some updated uid"
+      }
 
       assert {:ok, %Record{} = record} = Records.update_record(record, update_attrs)
       assert record.date_created == ~N[2022-10-27 16:52:00]
