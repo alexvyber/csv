@@ -60,6 +60,7 @@ defmodule Csv.MixProject do
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     [
+      "scripts.gencsv": ["run dev/scripts/gencsv.exs"],
       setup: ["deps.get", "ecto.setup"],
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
