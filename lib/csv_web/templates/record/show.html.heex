@@ -1,0 +1,28 @@
+<h1>Show Record</h1>
+
+<ul>
+
+  <li>
+    <strong>Uid:</strong>
+    <%= @record.uid %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @record.description %>
+  </li>
+
+  <li>
+    <strong>Date created:</strong>
+    <%= @record.date_created %>
+  </li>
+
+  <li>
+    <strong>Link:</strong>
+    <%= @record.link %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.record_path(@conn, :edit, @record) %></span> |
+<span><%= link "Back", to: Routes.record_path(@conn, :index) %></span>

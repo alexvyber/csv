@@ -1,0 +1,28 @@
+<h1>Show Bad record</h1>
+
+<ul>
+
+  <li>
+    <strong>Uid:</strong>
+    <%= @bad_record.uid %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @bad_record.description %>
+  </li>
+
+  <li>
+    <strong>Date created:</strong>
+    <%= @bad_record.date_created %>
+  </li>
+
+  <li>
+    <strong>Link:</strong>
+    <%= @bad_record.link %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.bad_record_path(@conn, :edit, @bad_record) %></span> |
+<span><%= link "Back", to: Routes.bad_record_path(@conn, :index) %></span>
