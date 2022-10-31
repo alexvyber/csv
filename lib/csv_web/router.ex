@@ -18,8 +18,12 @@ defmodule CsvWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
-    resources "/records", RecordController, only: [:index, :show]
-    resources "/bad_records", BadRecordController, only: [:index, :show]
+    resources "/records", RecordController, only: [:show]
+
+    get "/files", FileUploadController, :index
+    get "/files/search", FileUploadController, :search
+    get "/files/:id", FileUploadController, :show
+    post "/files/new", FileUploadController, :create
   end
 
   # Other scopes may use custom stacks.

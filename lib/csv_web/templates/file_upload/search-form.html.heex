@@ -1,0 +1,6 @@
+   <%= form_for @conn, Routes.file_upload_path(@conn, :search), [class: "my-12", method: :get], fn f -> %>
+   <label class="flex flex-col ">Searh Files
+      <%= search_input f, :query, class: "px-5 py-2 mb-2 text-gray-700 form-label rounded-md bg-white  " %>
+      </label>
+      <%= submit "Search", class: "bg-green-100 border hover:bg-green-200 py-2.5 px-4 font-medium rounded-md"  %>
+    <% end %>

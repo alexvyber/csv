@@ -1,0 +1,37 @@
+<section class="mb-8">
+  <%= link "Back To Files", to: Routes.file_upload_path(@conn, :index), class: "bg-white border hover:bg-slate-200 py-2 px-4 rounded-md" %>
+</section>
+
+<section>
+  <h1 class="text-2xl font-semibold text-slate-700">
+    <%= @file.file_name %>
+  </h1>
+</section>
+
+ <div class="flex justify-start mt-12">
+  <div class="  mb-3 w-96">
+    Number of errors: <%= @file.errors %>
+  </div>
+</div> 
+
+<table class="w-full bg-white border rounded p-4 mt-12">
+  <thead >
+    <tr>
+      <th class="pr-5 text-left">Uid</th>
+      <th class="pr-5 text-left">Description</th>
+      <th class="pr-5 text-left">Date created</th>
+      <th class="pr-5 text-left">Link</th>
+    </tr>
+  </thead>
+  <tbody >
+    <%= for record <- @records do %>
+    <tr>
+      <td class="pr-5"><%= record.uid %></td>
+      <td class="pr-5"><%= record.description %></td>
+      <td class="pr-5"><%= record.date_created %></td>
+      <td class="pr-5"><%= record.link %></td>
+    </tr>
+   <% end %>
+  </tbody>
+</table>
+

@@ -7,6 +7,7 @@ defmodule Csv.Records.Record do
     field :description, :string
     field :link, :string
     field :uid, :string
+    belongs_to :file, Csv.Files.File
 
     timestamps()
   end

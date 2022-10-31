@@ -8,98 +8,29 @@ defmodule Csv.Records do
 
   alias Csv.Records.Record
 
-  @doc """
-  Returns the list of records.
-
-  ## Examples
-
-      iex> list_records()
-      [%Record{}, ...]
-
-  """
-  def list_records do
-    Repo.all(Record)
+  def get_record!(id) do
+    Repo.get!(Record, id)
+    |> Repo.preload([:file])
   end
 
-  @doc """
-  Gets a single record.
-
-  Raises `Ecto.NoResultsError` if the Record does not exist.
-
-  ## Examples
-
-      iex> get_record!(123)
-      %Record{}
-
-      iex> get_record!(456)
-      ** (Ecto.NoResultsError)
-
-  """
-  def get_record!(id), do: Repo.get!(Record, id)
-
-  @doc """
-  Creates a record.
-
-  ## Examples
-
-      iex> create_record(%{field: value})
-      {:ok, %Record{}}
-
-      iex> create_record(%{field: bad_value})
-      {:error, %Ecto.Changeset{}}
-
-  """
-  def create_record(attrs \\ %{}) do
+  def create_record(attrs \\ %{}, file) do
     %Record{}
     |> Record.changeset(attrs)
+    |> Ecto.Changeset.put_assoc(:file, file)
     |> Repo.insert()
   end
 
-  @doc """
-  Updates a record.
-
-  ## Examples
-
-      iex> update_record(record, %{field: new_value})
-      {:ok, %Record{}}
-
-      iex> update_record(record, %{field: bad_value})
-      {:error, %Ecto.Changeset{}}
-
-  """
-
-  # def update_record(%Record{} = record, attrs) do
-  #   record
-  #   |> Record.changeset(attrs)
-  #   |> Repo.update()
-  # end
-
-  @doc """
-  Deletes a record.
-
-  ## Examples
-
-      iex> delete_record(record)
-      {:ok, %Record{}}
-
-      iex> delete_record(record)
-      {:error, %Ecto.Changeset{}}
-
-  """
-  def delete_record(%Record{} = record) do
-    Repo.delete(record)
+  def list_records_by_file_id!(file_id) do
+    Repo.all(from(r in Record, where: r.file_id == ^file_id, order_by: [desc: r.updated_at]))
   end
 
-  @doc """
-  Returns an `%Ecto.Changeset{}` for tracking record changes.
+  def search_records(search_phrase) do
+    # start_character = String.slice(search_phrase, 0..1)
 
-  ## Examples
-
-      iex> change_record(record)
-      %Ecto.Changeset{data: %Record{}}
-
-  """
-  # def change_record(%Record{} = record, attrs \\ %{}) do
-  #   Record.changeset(record, attrs)
-  # end
+    from(
+      r in Record,
+      where: ilike(r.uid, ^"#{search_phrase}%")
+    )
+    |> Repo.all()
+  end
 end

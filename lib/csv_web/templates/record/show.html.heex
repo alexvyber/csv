@@ -1,9 +1,11 @@
-<h1>Show Record</h1>
 
+<section class="mb-8">
+  <%= link "Back To Files", to: Routes.file_upload_path(@conn, :index), class: "bg-white border hover:bg-slate-200 py-2 px-4 rounded-md" %>
+</section>
 <ul>
 
   <li>
-    <strong>Uid:</strong>
+    <strong>uid:</strong>
     <%= @record.uid %>
   </li>
 
@@ -24,4 +26,8 @@
 
 </ul>
 
-<span><%= link "Back", to: Routes.record_path(@conn, :index) %></span>
+<div class="py-4">
+  <CsvWeb.Components.Files.file_card file={@record.file} conn={@conn} button_attrs={"somne"} />
+</div>
+
+

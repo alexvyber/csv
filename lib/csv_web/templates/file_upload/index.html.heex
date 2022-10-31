@@ -1,0 +1,26 @@
+<section class="mb-8">
+<%= link "Back To Home", to: Routes.page_path(@conn, :index), class: "bg-white border hover:bg-slate-200 py-2 px-4 rounded-md" %>
+</section>
+
+<section>
+  <h1 class="text-2xl font-semibold text-slate-700">
+    Uploading Files
+  </h1>
+</section>
+
+
+
+<div class="flex items-center">
+
+<%= render "form.html", Map.put(assigns, :action, Routes.file_upload_path(@conn, :create)) %>
+<%= render "search-form.html", Map.put(assigns, :action, Routes.file_upload_path(@conn, :create)) %>
+
+</div>
+<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-2 mt-8 sm:gap-3">
+
+<%= for file <- @files do %>
+<CsvWeb.Components.Files.file_card file={file} conn={@conn} button_attrs={"somne"} />
+<% end %>
+</div>
+
+
